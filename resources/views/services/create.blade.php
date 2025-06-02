@@ -8,31 +8,34 @@
                 {{-- <p class="category"></p> --}}
             </div>
             <div class="card-content table-responsive table-full-width">
-                <form action="{{ route('stylists.store')}}" method="post">
+                <form action="{{ route('services.store')}}" method="post" enctype="multipart/form-data">
                     <table class="table table-hover">
                         @csrf
                         <tr>
-                            <td>Full name</td>
+                            <td>Service name</td>
                             <td><input type="text" name="name"></td>
                         </tr>
                         <tr>
-                            <td>Phone number</td>
-                            <td><input type="text" name="phone"></td>
+                            <td>Description</td>
+                            <td><textarea name="description" class="textarea"></textarea></td>
                         </tr>
                         <tr>
-                            <td>Gender</td>
+                            <td>Duration (minutes)</td>
                             <td>
-                                <input type="radio" name="gender" value="0" checked>Male 
-                                <input type="radio" name="gender" value="1">Female
+                                <input type="text" name="duration">
                             </td>
                         </tr>
                         <tr>
-                            <td>Birth date</td>
-                            <td><input type="date" name="birth_date" value="1997-07-16"></td>
+                            <td>Price (1000 VND)</td>
+                            <td>
+                                <input type="text" name="price">
+                            </td>
                         </tr>
                         <tr>
-                            <td>Province</td>
-                            <td><input type="text" name="address_province"></td>
+                            <td>Image</td>
+                            <td>
+                                <input type="file" name="image" accept="image/*">
+                            </td>
                         </tr>
                         <tr>
                             <td colspan="2"><button type="submit">Add</button></td>

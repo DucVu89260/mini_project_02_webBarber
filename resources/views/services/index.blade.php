@@ -6,7 +6,7 @@
             <div class="card-header">
                 <h4 class="card-title">{{ $title }}</h4>
                 {{-- <p class="category"></p> --}}
-                <p><a href="{{ route('stylists.create')}}">Add more stylists</a></p>
+                <p><a href="{{ route('services.create')}}">Add more services</a></p>
                 
             </div>
             <div class="card-header">
@@ -22,30 +22,36 @@
                 <table class="table table-hover">
                     <tr>
                         <th>#</th>
-                        <th>Full name</th>
-                        <th>Phone number</th>
-                        <th>Gender</th>
-                        <th>Province</th>
-                        <th>Age</th>
+                        <th>Service name</th>
+                        <th>Image</th>
+                        <th>Description</th>
+                        <th>Duration (minutes)</th>
+                        <th>Price (USD)</th>
                         <th></th>
                         <th></th>
                     </tr>
-                    {{-- @foreach($data as $stylist)
+                    @foreach($data as $service)
                         <tr>
-                            <td>{{ $stylist->id }}</td>
-                            <td>{{ $stylist->name }}</td>
-                            <td>{{ $stylist->phone }}</td>
-                            <td>{{ $stylist->getGenderNameAttribute() }}</td>
-                            <td>{{ $stylist->address_province }}</td>
-                            <td>{{ $stylist->getAgeAttribute() }}</td>
+                            <td>{{ $service->id }}</td>
+                            <td>{{ $service->name }}</td>
                             <td>
-                                <a href="{{ route('stylists.edit', $stylist)}}">
+                                @if ($service->image)
+                                    <img src="{{ asset('storage/' . $service->image) }}" alt="{{ $service->name }}" width="100">
+                                @else
+                                    NA
+                                @endif
+                            </td>
+                            <td>{{ $service->description }}</td>
+                            <td>{{ $service->duration }}</td>
+                            <td>{{ $service->price }}</td>
+                            <td>
+                                <a href="{{ route('services.edit', $service)}}">
                                     <button class="btn btn-primary">Edit</button>
                                 </a>
                             </td>
                             @if(session()->get('level') == 1)
                             <td>
-                                <form method="post" action="{{ route('stylists.destroy', $stylist)}}">
+                                <form method="post" action="{{ route('services.destroy', $service)}}" class="form-inline">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-danger">Del</button>
@@ -53,7 +59,7 @@
                             </td>
                             @endif
                         </tr>
-                    @endforeach --}}
+                    @endforeach
                 </table>
             </div>
             <div class="float-left pagination-container">

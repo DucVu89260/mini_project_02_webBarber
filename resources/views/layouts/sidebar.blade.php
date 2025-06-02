@@ -43,11 +43,9 @@
                         </a>
                      </li>
                      <li>
-                        <a href="#settings">
+                        <a href="{{route('logout')}}">
                            <span class="sidebar-mini">L</span>
-                           <a href="{{route('logout')}}">
-                              <span class="sidebar-normal">Logout</span>
-                           </a>
+                           <span class="sidebar-normal">Logout</span>
                         </a>
                      </li>
                   </ul>
@@ -59,21 +57,48 @@
             <li>
                <a data-toggle="collapse" href="#dashboardOverview">
                   <i class="ti-panel"></i>
-                  <p>General
+                  <p>General Management
                      <b class="caret"></b>
                   </p>
                </a>
                <div class="collapse" id="dashboardOverview">
                   <ul class="nav">
                      <li>
-                        <a href="#panda">
-                           <span class="sidebar-mini">C1</span>
-                           <span class="sidebar-normal">Collapse 1</span>
+                        <a href="{{route('stylists.index')}}">
+                           <span class="sidebar-mini">G1</span>
+                           <span class="sidebar-normal">Stylists</span>
                         </a>
                      </li>
                      <li>
-                        <span class="sidebar-mini">C2</span>
-                        <span class="sidebar-normal">Collapse 2</span>
+                        <a href="{{route('services.index')}}">
+                           <span class="sidebar-mini">G2</span>
+                           <span class="sidebar-normal">Services</span>
+                        </a>
+                     </li>
+                  </ul>
+               </div>
+            </li>
+
+            <li>
+               <a data-toggle="collapse" href="#dashboardOverview">
+                  <i class="ti-dashboard"></i>
+                  <p>Dashboard
+                     <b class="caret"></b>
+                  </p>
+               </a>
+               <div class="collapse" id="dashboardOverview">
+                  <ul class="nav">
+                     <li>
+                        <a href="">
+                           <span class="sidebar-mini">D1</span>
+                           <span class="sidebar-normal">Income</span>
+                        </a>
+                     </li>
+                     <li>
+                        <a href="">
+                           <span class="sidebar-mini">D2</span>
+                           <span class="sidebar-normal">Pending Schedules</span>
+                        </a>
                      </li>
                   </ul>
                </div>

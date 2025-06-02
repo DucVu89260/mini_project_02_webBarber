@@ -6,7 +6,6 @@
             <div class="card-header">
                 <h4 class="card-title">{{ $title }}</h4>
                 {{-- <p class="category"></p> --}}
-                <a href="{{ route('stylists.create')}}">Add more stylists</a>
             </div>
             <div class="card-content table-responsive table-full-width">
                 <form action="{{ route('stylists.update', $each)}}" method="post">
