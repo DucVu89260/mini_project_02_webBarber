@@ -31,10 +31,9 @@ class StoreRequest extends FormRequest
             'phone' => [
                 'required',
                 'string',
-                'string',
                 'min:10',
                 'max:10',
-                'unique:stylists',
+                'unique:stylists,phone',
             ],
             'birth_date' => [
                 'required',
