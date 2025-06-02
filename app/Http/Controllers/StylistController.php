@@ -23,7 +23,7 @@ class StylistController extends Controller
     {   
         $search = $request -> get('q');
 
-        $data = $this-  >model::query()
+        $data = $this->model::query()
             ->where('name','like','%'.$search.'%')
             ->paginate(5)
             ->appends(['q' => $search]);
