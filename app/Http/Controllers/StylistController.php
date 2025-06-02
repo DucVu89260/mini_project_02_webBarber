@@ -16,6 +16,14 @@ class StylistController extends Controller
     public function __construct()
     {
         $this->model = new Stylist();
+
+        $routeName  = request()->route()->getName();
+
+        $arr        = explode('.', $routeName);
+        $arr        = array_map('ucfirst', $arr);
+        $title      = implode(' - ', $arr);
+
+        View::share('title', $title);
     }
 
 
