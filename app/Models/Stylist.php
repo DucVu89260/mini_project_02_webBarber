@@ -12,10 +12,11 @@ class Stylist extends Model
     protected $fillable = [
         'name',
         'phone',
-        'gender',   
+        'gender',
         'birth_date',
         'address_province',
     ];
+
 
     public function getAgeAttribute()
     {

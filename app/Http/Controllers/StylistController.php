@@ -11,19 +11,11 @@ use Illuminate\Support\Facades\View;
 
 class StylistController extends Controller
 {
-    private $model;
+    private Stylist $model;
 
     public function __construct()
     {
         $this->model = new Stylist();
-
-        $routeName  = request()->route()->getName();
-
-        $arr        = explode('.', $routeName);
-        $arr        = array_map('ucfirst', $arr);
-        $title      = implode(' - ', $arr);
-
-        View::share('title', $title);
     }
 
 
@@ -31,7 +23,7 @@ class StylistController extends Controller
     {   
         $search = $request -> get('q');
 
-        $data = Stylist::query()
+        $data = $this-  >model::query()
             ->where('name','like','%'.$search.'%')
             ->paginate(5)
             ->appends(['q' => $search]);
@@ -62,18 +54,23 @@ class StylistController extends Controller
         ]); 
     }
     
-    public function update(UpdateRequest $request, $stylistId)
+    public function update(UpdateRequest $request, Stylist $stylist)
     {   
 
-        $this->model::where('id', $stylistId)
-            ->update($request->validated());
+        $this -> model::query()
+        ->where('id', $stylistId)
+        ->update( $request->validated());
 
         return redirect('stylists');
     }
 
     public function destroy(Stylist $stylist)
     {   
-        $this -> model::destroy($stylist->id);
+        if(!$stylist->canDelete()){
+            return redirect('stylists')->with('error','Stylist cannot be deleted');
+        }
+
+        $stylist->delete();
 
         return redirect('stylists');
     }

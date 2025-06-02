@@ -25,22 +25,15 @@ class UpdateRequest extends FormRequest
     {
         return [
             'name' => [
-                'required',
                 'string',
                 'min:3',
                 'max:20',
             ],
             'phone' => [
-                'required',
                 'string',
-                'string',
+                'min:10',
+                'max:10',
                 Rule::unique(Stylist::class)->ignore($this->stylist),
-            ],
-            'birth_date' => [
-                'required',
-            ],
-            'address_province' => [
-                'required',
             ],
         ];
     }
