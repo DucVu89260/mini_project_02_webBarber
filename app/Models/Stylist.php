@@ -17,8 +17,16 @@ class Stylist extends Model
         'address_province',
     ];
 
-    public function getBirthYearAttribute()
+    public function getAgeAttribute()
     {
-        return date('Y', strtotime($this->birth_date));
+        return now()->diffInYears($this->birth_date);
+    }
+
+    public function getGenderNameAttribute()
+    {
+        return match($this->gender) {
+            0 => 'Male',
+            1 => 'Female',
+        };
     }
 }

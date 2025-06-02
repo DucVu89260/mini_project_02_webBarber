@@ -30,7 +30,7 @@
                         <th></th>
                         <th></th>
                     </tr>
-                    @foreach($data as $stylist)
+                    {{-- @foreach($data as $stylist)
                         <tr>
                             <td>{{ $stylist->id }}</td>
                             <td>{{ $stylist->name }}</td>
@@ -53,7 +53,7 @@
                             </td>
                             @endif
                         </tr>
-                    @endforeach
+                    @endforeach --}}
                 </table>
             </div>
             <div class="float-left pagination-container">

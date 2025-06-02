@@ -20,7 +20,10 @@
          <div class="info">
             <a data-toggle="collapse" href="#collapseExample" class="collapsed">
                <span>
-                  Duc Vu Minh
+                  {{session()->get('level') === 1 ? 'SuperAdmin' : 'Admin'}}
+               </span>
+               <span>
+                  {{session()->get('name')}}
                   <b class="caret"></b>
                </span>
             </a>
@@ -42,7 +45,9 @@
                      <li>
                         <a href="#settings">
                            <span class="sidebar-mini">L</span>
-                           <span class="sidebar-normal">Logout</span>
+                           <a href="{{route('logout')}}">
+                              <span class="sidebar-normal">Logout</span>
+                           </a>
                         </a>
                      </li>
                   </ul>
