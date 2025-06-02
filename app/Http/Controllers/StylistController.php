@@ -51,7 +51,7 @@ class StylistController extends Controller
     {
         $this->model::create($request->validated());
 
-        return redirect('stylists')->with('success','Stylist added');
+        return redirect('stylists');
 
     }
 
@@ -65,17 +65,16 @@ class StylistController extends Controller
     public function update(UpdateRequest $request, $stylistId)
     {   
 
-        $this -> model::query()
-        ->where('id', $stylistId)
-        ->update( $request->validated());
+        $this->model::where('id', $stylistId)
+            ->update($request->validated());
 
-        return redirect('stylists')->with('success','Stylist updated');
+        return redirect('stylists');
     }
 
     public function destroy(Stylist $stylist)
     {   
         $this -> model::destroy($stylist->id);
 
-        return redirect('stylists')->with('success','Stylist deleted');
+        return redirect('stylists');
     }
 }
