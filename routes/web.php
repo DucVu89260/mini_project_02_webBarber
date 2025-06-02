@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\StylistController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,11 +34,17 @@ Route::group([
       'destroy',
    ]);
 
+   Route::resource('services', ServiceController::class)->except([
+      'show',
+      'destroy',
+   ]);
+
    Route::group([
       'middleware' => App\Http\Middleware\CheckSuperAdminMiddleware::class,
    ], function () {
       
       Route::delete('stylists/{stylist}', [StylistController::class, 'destroy']) ->name('stylists.destroy');
+      Route::delete('services/{service}', [ServiceController::class, 'destroy']) ->name('services.destroy');
 
    });
    
