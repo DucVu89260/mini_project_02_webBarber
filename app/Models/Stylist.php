@@ -12,23 +12,22 @@ class Stylist extends Model
     protected $fillable = [
         'name',
         'phone',
-        'gender',   
+        'gender',
         'birth_date',
         'address_province',
     ];
 
-    public function schedules()
+
+    public function getAgeAttribute()
     {
-        return $this->hasMany(Schedule::class);
+        return now()->diffInYears($this->birth_date);
     }
 
-    public function getBirthYearAttribute()
+    public function getGenderNameAttribute()
     {
-        return date('Y', strtotime($this->birth_date));
-    }
-
-    public function canDelete()
-    {
-        return !$this->schedules()->where('time', '>', now())->exists();
+        return match($this->gender) {
+            0 => 'Male',
+            1 => 'Female',
+        };
     }
 }

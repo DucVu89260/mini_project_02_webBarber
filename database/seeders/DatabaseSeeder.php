@@ -13,6 +13,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Stylist::factory()->count(10)->create();
+        Stylist::factory()->count(20)->create();
+        
+        $this->call([
+            UserSeeder::class,
+        ]);
     }
 }
