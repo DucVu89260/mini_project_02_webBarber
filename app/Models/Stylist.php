@@ -17,8 +17,18 @@ class Stylist extends Model
         'address_province',
     ];
 
+    public function schedules()
+    {
+        return $this->hasMany(Schedule::class);
+    }
+
     public function getBirthYearAttribute()
     {
         return date('Y', strtotime($this->birth_date));
+    }
+
+    public function canDelete()
+    {
+        return !$this->schedules()->where('time', '>', now())->exists();
     }
 }
