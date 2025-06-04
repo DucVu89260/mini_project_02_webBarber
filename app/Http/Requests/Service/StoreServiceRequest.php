@@ -22,11 +22,31 @@ class StoreServiceRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'duration' => 'required|integer|min:1',
-            'price' => 'required|numeric|min:1',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
+            'name' => [
+                'required',
+                'string',
+                'max:255',
+            ],
+            'description' => [
+                'nullable',
+                'string',
+            ],
+            'duration' => [
+                'required',
+                'integer',
+                'min:1',
+            ],
+            'price' => [
+                'required',
+                'numeric',
+                'min:1',
+            ],
+            'image' => [
+                'nullable',
+                'image',
+                'mimes:jpg,jpeg,png,gif',
+                'max:2048',
+            ],
         ];
     }
 }

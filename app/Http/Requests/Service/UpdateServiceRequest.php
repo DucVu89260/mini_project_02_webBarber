@@ -24,11 +24,28 @@ class UpdateServiceRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:255',
-            'description' => 'string',
-            'duration' => 'integer|min:1',
-            'price' => 'numeric|min:1',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
+            'name' => [
+                'string',
+                'max:255',
+            ],
+            'description' => [
+                'nullable',
+                'string',
+            ],
+            'duration' => [
+                'integer',
+                'min:1',
+            ],
+            'price' => [
+                'numeric',
+                'min:1',
+            ],
+            'image' => [
+                'nullable',
+                'image',
+                'mimes:jpg,jpeg,png,gif',
+                'max:2048',
+            ],
         ];
     }
 }
